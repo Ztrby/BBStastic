@@ -1,4 +1,5 @@
 import time
+import logging
 import meshtastic
 import meshtastic.tcp_interface
 from pubsub import pub
@@ -16,8 +17,8 @@ pub.subscribe(onConnection, "meshtastic.connection.established")
 interface = meshtastic.tcp_interface.TCPInterface(hostname='192.168.100.165')
 
 try:
-while True:
-    time.sleep(1000)
+    while True:
+        time.sleep(1000)
 
  except KeyboardInterrupt:
         logging.info("Shutting down the server...")
