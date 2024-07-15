@@ -9,6 +9,7 @@ def onReceive(packet, interface): # called when a packet arrives
 def onConnection(interface, topic=pub.AUTO_TOPIC): # called when we (re)connect to the radio
     # defaults to broadcast, specify a destination ID if you wish
     #interface.sendText("hello mesh")
+    print(f"Connected")
 
 pub.subscribe(onReceive, "meshtastic.receive")
 pub.subscribe(onConnection, "meshtastic.connection.established")
