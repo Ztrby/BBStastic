@@ -1,7 +1,7 @@
 import time
 import logging
 import meshtastic
-import meshtastic.tcp_interface
+import meshtastic.serial_interface, meshtastic.tcp_interface
 from pubsub import pub
 
 def onReceive(packet, interface): # called when a packet arrives
