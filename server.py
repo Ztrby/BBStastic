@@ -12,6 +12,8 @@ def onConnection(interface, topic=pub.AUTO_TOPIC): # called when we (re)connect 
 
 pub.subscribe(onReceive, "meshtastic.receive")
 pub.subscribe(onConnection, "meshtastic.connection.established")
+
+# Create inteface
 interface = meshtastic.tcp_interface.TCPInterface(hostname='192.168.100.165')
 # interface = meshtastic.serial_interface.SerialInterface()
 
