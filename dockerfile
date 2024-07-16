@@ -17,4 +17,4 @@ VOLUME /datafiles
 WORKDIR /datafiles
 
 # Define the command to run
-CMD ["sh", "-c", " python3 /server.py"]
+#CMD ["sh", "-c", " python3 /server.py"]
