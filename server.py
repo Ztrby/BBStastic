@@ -5,16 +5,18 @@ import meshtastic.serial_interface, meshtastic.tcp_interface
 from pubsub import pub
 
 def onReceive(packet, interface): # called when a packet arrives
-    print(f"Received: {packet}")
+    #print(f"Received: {packet}")
+    logging.info(f"Packet received")
 
 def onConnection(interface, topic=pub.AUTO_TOPIC): # called when we (re)connect to the radio
-    # defaults to broadcast, specify a destination ID if you wish
-    #interface.sendText("hello mesh")
     print(f"Connected")
 
 pub.subscribe(onReceive, "meshtastic.receive")
 pub.subscribe(onConnection, "meshtastic.connection.established")
+
+# Create inteface
 interface = meshtastic.tcp_interface.TCPInterface(hostname='192.168.100.165')
+# interface = meshtastic.serial_interface.SerialInterface()
 
 
     try:

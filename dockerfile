@@ -8,7 +8,7 @@ RUN git clone https://github.com/ztrby/BBStastic.git
 
 # Install Python dependencies
 RUN pip install --no-cache-dir --break-system-packages meshtastic
-RUN pip install --no-cache-dir --break-system-packages pypubsub
+#RUN pip install --no-cache-dir --break-system-packages pypubsub
 
 # Define config volume
 VOLUME /datafiles
