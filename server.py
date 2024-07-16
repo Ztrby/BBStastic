@@ -19,10 +19,10 @@ interface = meshtastic.tcp_interface.TCPInterface(hostname='192.168.100.165')
 # interface = meshtastic.serial_interface.SerialInterface()
 
 
-    try:
-        while True:
-            time.sleep(1000)
+try:
+    while True:
+        time.sleep(1000)
 
-     except KeyboardInterrupt:
-        logging.info("Shutting down the server...")
-        interface.close()
+except KeyboardInterrupt:
+    logging.info("Shutting down the server...")
+    interface.close()
