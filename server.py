@@ -5,7 +5,7 @@ import meshtastic.serial_interface, meshtastic.tcp_interface
 from pubsub import pub
 
 def onReceive(packet, interface): # called when a packet arrives
-    #print(f"Received: {packet}")
+    print(f"Received: ")
     logging.info(f"Packet received")
 
 def onConnection(interface, topic=pub.AUTO_TOPIC): # called when we (re)connect to the radio
