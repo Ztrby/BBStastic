@@ -1,1 +1,2 @@
 # BBStastic
+How to use
