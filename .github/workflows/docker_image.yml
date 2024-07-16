@@ -25,4 +25,4 @@ jobs:
       with:
        context:
        push: true
-       tags: ztrby/BBStastic:latest
+       tags: ztrby/bbstastic:latest
