@@ -10,7 +10,7 @@ def readmessage(packet, interface):
             #Check that message is a direct message to BBS-node
             if to_id==3662954260:
                 match len(message_string):
-                    # First level main menu
+                    # First level main menu3
                     case 1:
                         match message_string.upper():
                             case "M":
