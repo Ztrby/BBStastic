@@ -22,6 +22,9 @@ def readmessage(packet, interface):
                             case "S":
                                 print("Stats menu")
                                 replay(stats_menu(), interface, meshfrom_hex_id)
+                            case "U":
+                                print("User menu")
+                                replay(stats_menu(), interface, meshfrom_hex_id)
                             case _:
                                 print("mainmenu")
                                 replay(main_menu(), interface, meshfrom_hex_id)
@@ -55,6 +58,16 @@ def readmessage(packet, interface):
                             # Stats Mesh
                             case "SM":
                                 replay("Stats mesh, not implemented yet", interface, meshfrom_hex_id)
+                        # User menu
+                            # User Create
+                            case "UC":
+                                replay("User create, not implemented yet", interface, meshfrom_hex_id)
+                            # User Update
+                            case "UU":
+                                replay("User update, not implemented yet", interface, meshfrom_hex_id)
+                            # User Create
+                            case "UD":
+                                replay("User Delete, not implemented yet", interface, meshfrom_hex_id)
                             case _:
                                 replay(main_menu(), interface, meshfrom_hex_id)  
                             
@@ -88,8 +101,8 @@ def idToHex(nodeId):
     return '!' + hex(nodeId)[2:]
 
 def main_menu():
-    mainmenu_string = f"***** Main menu ******\n[M]ail\n[N]ews\n[S]tats"
-    return mainmenu_string
+    menu_string = f"***** Main menu ******\n[M]ail\n[N]ews\n[S]tats"
+    return menu_string
 
 def mail_menu():
     menu_string = f"***** Mail menu ******\n[MR]ead\n[MS]end\n[MD]elete"
@@ -103,4 +116,7 @@ def stats_menu():
     menu_string = f"***** Stats menu ******\n[SN]Nodes\n[SM]Mesh"
     return menu_string
 
+def user_menu():
+    menu_string = f"***** User menu ******\n[UC]Create user\n[UU]Update user\n[UD]User delete"
+    return menu_string
 
