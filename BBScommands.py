@@ -119,19 +119,19 @@ def main_menu():
     return menu_string
 
 def mail_menu():
-    menu_string = f"***** Mail menu ******\n[MR]ead\n[MS]end\n[MD]elete"
+    menu_string = f"***** Mail menu ******\n[MR] Read\n[MS] Send\n[MD] Delete"
     return menu_string
 
 def news_menu():
-    menu_string = f"***** News menu ******\n[NR]ead\n[NP]ost\n[ND]elete"
+    menu_string = f"***** News menu ******\n[NR] Read\n[NP] Post\n[ND] Delete"
     return menu_string
 
 def stats_menu():
-    menu_string = f"***** Stats menu ******\n[SN]Nodes\n[SM]Mesh"
+    menu_string = f"***** Stats menu ******\n[SN] Nodes\n[SM] Mesh"
     return menu_string
 
 def user_menu():
-    menu_string = f"***** User menu ******\n[UC]Create user\n[UU]Update user\n[UD]User delete"
+    menu_string = f"***** User menu ******\n[UC] Create user\n[UU] Update user\n[UD] User delete"
     return menu_string
 
 def quick_menu():
