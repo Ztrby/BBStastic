@@ -24,7 +24,7 @@ def readmessage(packet, interface):
                                 replay(stats_menu(), interface, meshfrom_hex_id)
                             case "U":
                                 print("User menu")
-                                replay(stats_menu(), interface, meshfrom_hex_id)
+                                replay(user_menu(), interface, meshfrom_hex_id)
                             case _:
                                 print("mainmenu")
                                 replay(main_menu(), interface, meshfrom_hex_id)
@@ -101,7 +101,7 @@ def idToHex(nodeId):
     return '!' + hex(nodeId)[2:]
 
 def main_menu():
-    menu_string = f"***** Main menu ******\n[M]ail\n[N]ews\n[S]tats"
+    menu_string = f"***** Main menu ******\n[M]ail\n[N]ews\n[S]tats\n[U]ser"
     return menu_string
 
 def mail_menu():
