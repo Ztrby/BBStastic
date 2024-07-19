@@ -25,6 +25,12 @@ def readmessage(packet, interface):
                             case "U":
                                 print("User menu")
                                 replay(user_menu(), interface, meshfrom_hex_id)
+                            case "Q":
+                                print("Quick menu")
+                                replay(quick_menu(), interface, meshfrom_hex_id)
+                            case "H":
+                                print("Help menu")
+                                replay(help_menu(), interface, meshfrom_hex_id)
                             case _:
                                 print("mainmenu")
                                 replay(main_menu(), interface, meshfrom_hex_id)
@@ -69,10 +75,18 @@ def readmessage(packet, interface):
                             case "UD":
                                 replay("User Delete, not implemented yet", interface, meshfrom_hex_id)
                             case _:
-                                replay(main_menu(), interface, meshfrom_hex_id)  
-                            
+                                replay(main_menu(), interface, meshfrom_hex_id)
+                    case 4:
+                        # Second level menu
+                        match message_string.upper():
+                            case "HELP":
+                                print("Help menu")
+                                replay(help_menu(), interface, meshfrom_hex_id)
+                            case _:
+                                replay(main_menu(), interface, meshfrom_hex_id) 
+                    # Protecting from autoreplay ping pong        
                     case _ if len(message_string) < 5:
-                        print("not one or 2 caracater")
+                        print("under 5 char sent")
                         replay(main_menu(), interface, meshfrom_hex_id)         
 
                     case _:
@@ -101,7 +115,7 @@ def idToHex(nodeId):
     return '!' + hex(nodeId)[2:]
 
 def main_menu():
-    menu_string = f"***** Main menu ******\n[M]ail\n[N]ews\n[S]tats\n[U]ser"
+    menu_string = f"***** Main menu ******\n[M]ail\n[N]ews\n[S]tats\n[U]ser\n[Q]uick commands\n[H]elp"
     return menu_string
 
 def mail_menu():
@@ -120,3 +134,10 @@ def user_menu():
     menu_string = f"***** User menu ******\n[UC]Create user\n[UU]Update user\n[UD]User delete"
     return menu_string
 
+def quick_menu():
+    menu_string = f"***** Quick menu ******\n[MS!!shortname!!subject!!text]\n"
+    return menu_string
+
+def help_menu():
+    menu_string = f"***** Help menu ******\nGo to link to see onlinehelp\nhttps://github.com/Ztrby/BBStastic"
+    return menu_string
