@@ -135,7 +135,7 @@ def user_menu():
     return menu_string
 
 def quick_menu():
-    menu_string = f"***** Quick menu ******\n[MS!!shortname!!subject!!text]\n"
+    menu_string = f"***** Quick menu ******\nMS!!shortname!!subject!!text\n"
     return menu_string
 
 def help_menu():
