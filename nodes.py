@@ -38,15 +38,17 @@ def update_node_packet_nodeapp(interface, nodeid, packet):
     node_info = packet['decoded'].get('user', {})
     print(f"Nodeinfo recieved from: {nodeid}")
     if 'hopLimit' in packet:
+        hoplimit = ""
         hoplimit = packet['hopLimit']
     if 'rxSnr' in packet:
         snr = packet['rxSnr']
     if 'rxRssi' in packet:
         rssi = packet['rxRssi']
     if 'hopStart' in packet:
-        hopsstart = packet['hopStart']
+        hopstart = ""
+        hopstart = packet['hopStart']
     db_commands.update_nodeinfo(nodeid, node_info.get('shortName', ''), node_info.get('longName', '') , str(datetime.datetime.now().timestamp()), "", \
-                                node_info.get('macaddr', ''),node_info.get('hwModel', ''),node_info.get('role', ''),hopsstart,hoplimit,snr,node_info.get('isLicensed', ''),"","","","","","")
+                                node_info.get('macaddr', ''),node_info.get('hwModel', ''),node_info.get('role', ''),hopstart,hoplimit,snr,node_info.get('isLicensed', ''),"","","","","","")
 
 def update_node_packet_posapp(interface, nodeid, packet):
     if packet['decoded'].get('portnum') == 'POSITION_APP':         
@@ -60,8 +62,9 @@ def update_node_packet_posapp(interface, nodeid, packet):
         if 'rxRssi' in packet:
             rssi = packet['rxRssi']
         if 'hopStart' in packet:
-            hopsstart = packet['hopStart']
-    db_commands.update_nodeinfo(nodeid, "","", str(datetime.datetime.now().timestamp()) , "","","","",hopsstart,hoplimit,snr,"", \
+            hopstart = ""
+            hopstart = packet['hopStart']
+    db_commands.update_nodeinfo(nodeid, "","", str(datetime.datetime.now().timestamp()) , "","","","",hopstart,hoplimit,snr,"", \
                                 position.get('latitude', ''), position.get('longitude', ''), position.get('altitude', ''),"","","")
 
 def update_node_packet_teleapp(interface, nodeid, packet):
@@ -69,17 +72,19 @@ def update_node_packet_teleapp(interface, nodeid, packet):
 
             telemetry = packet['decoded'].get('telemetry', {})
             if 'hopLimit' in packet:
+                hoplimit = ""
                 hoplimit = packet['hopLimit']
             if 'rxSnr' in packet:
                 snr = packet['rxSnr']
             if 'rxRssi' in packet:
                 rssi = packet['rxRssi']
             if 'hopStart' in packet:
-                hopsstart = packet['hopStart'] 
+                hopstart = ""
+                hopstart = packet['hopStart'] 
             environment_metrics = telemetry.get('environmentMetrics', {})
             if environment_metrics:
                 print(f"Recieved environment_metrics from {nodeid}")
-                db_commands.update_nodeinfo(nodeid,"","",str(datetime.datetime.now().timestamp()),"","","","",hopsstart,hoplimit,snr,"","","","", \
+                db_commands.update_nodeinfo(nodeid,"","",str(datetime.datetime.now().timestamp()),"","","","",hopstart,hoplimit,snr,"","","","", \
                                             environment_metrics.get('temperature', ''),environment_metrics.get('relativeHumidity', ''),environment_metrics.get('barometricPressure', ''))
 def update_node_packet_neighborapp(interface, nodeid, packet):
     if packet['decoded'].get('portnum') == 'NEIGHBORINFO_APP':
