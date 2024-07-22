@@ -53,6 +53,7 @@ def update_node_packet_posapp(interface, nodeid, packet):
         position = packet['decoded']['position']
         print(f"Positioninfo recieved from: {nodeid}")
         if 'hopLimit' in packet:
+            hoplimit = ""
             hoplimit = packet['hopLimit']
         if 'rxSnr' in packet:
             snr = packet['rxSnr']
