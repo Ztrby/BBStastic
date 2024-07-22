@@ -41,6 +41,7 @@ def update_node_packet_nodeapp(interface, nodeid, packet):
         hoplimit = ""
         hoplimit = packet['hopLimit']
     if 'rxSnr' in packet:
+        snr = ""
         snr = packet['rxSnr']
     if 'rxRssi' in packet:
         rssi = packet['rxRssi']
@@ -58,6 +59,7 @@ def update_node_packet_posapp(interface, nodeid, packet):
             hoplimit = ""
             hoplimit = packet['hopLimit']
         if 'rxSnr' in packet:
+            snr = ""
             snr = packet['rxSnr']
         if 'rxRssi' in packet:
             rssi = packet['rxRssi']
@@ -75,6 +77,7 @@ def update_node_packet_teleapp(interface, nodeid, packet):
                 hoplimit = ""
                 hoplimit = packet['hopLimit']
             if 'rxSnr' in packet:
+                snr = ""
                 snr = packet['rxSnr']
             if 'rxRssi' in packet:
                 rssi = packet['rxRssi']
