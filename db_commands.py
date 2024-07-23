@@ -130,9 +130,10 @@ def statistics_nodes():
                     GROUP BY hw_model \
                     ORDER BY COUNT(*) DESC"
         result = c.execute(SQLstring).fetchall()
-        prettyresult = ""
+        prettyresult = "Modell                            Antal\n"        
         for res in result:
-             prettyresult = prettyresult + str(res[0]) + "     " + str(res[1]) + "\n"
+             prettyresult += str(res[0]).ljust(40-len(res[0])) + " " + str(res[1]) + "\n"
+
         return prettyresult
 
 def statistic_mesh():
@@ -141,7 +142,20 @@ def statistic_mesh():
         SQLstring = "SELECT \
                     COUNT(*) \
                     FROM nodes"
+        tot = c.execute(SQLstring).fetchone()
+        SQLstring = "SELECT \
+                    avg(temperature) \
+                    FROM nodes"
         result = c.execute(SQLstring).fetchone()
-        prettyresult = result
-        return str(result)
+        SQLstring = "SELECT temperature \
+                    FROM nodes \
+                    ORDER BY temperature \
+                    LIMIT 1 \
+                    OFFSET (SELECT COUNT(*) \
+                    FROM nodes) / 2"
+        median = c.execute(SQLstring).fetchone()
+        prettyresult = f"Total amount of nodes in mesh: {tot}"
+        prettyresult += "\n\nAvarage temperature in mesh: " + "{:.2f}".format(result[0]) + " ºC"
+        #prettyresult += "\n\nMedian temperature in mesh: " + str(median[0]) + " ºC"
+        return str(prettyresult)
                     

@@ -78,7 +78,7 @@ def readmessage(packet, interface):
                                 replay(db_commands.statistics_nodes(), interface, meshfrom_hex_id)
                             # Stats Mesh
                             case "SM":
-                                replay("There are: " + db_commands.statistic_mesh() + " known nodes in this mesh" , interface, meshfrom_hex_id)
+                                replay( db_commands.statistic_mesh() , interface, meshfrom_hex_id)
                         # User menu
                             # User Create
                             case "UC":
